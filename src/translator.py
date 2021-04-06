@@ -14,11 +14,13 @@ def english_to_french(english_text):
     this function translates english text to
     french text using IBM WLT service
     """
+    # check for empty input
+    if english_text is None:
+        return None
     # get service authentication credentials
     load_dotenv(find_dotenv())
     api_key = os.getenv('API_KEY')
     api_url = os.getenv('API_URL')
-
     # authenticate with cloud service
     authenticator = IAMAuthenticator(api_key)
     language_translator = LanguageTranslatorV3(
@@ -26,7 +28,6 @@ def english_to_french(english_text):
         authenticator=authenticator
         )
     language_translator.set_service_url(api_url)
-
     # return text translation
     translation = language_translator.translate(
         text=english_text,
@@ -39,11 +40,13 @@ def english_to_german(english_text):
     this function translates english text to
     german text using IBM WLT service
     """
+    # check for empty input
+    if english_text is None:
+        return None
     # get service authentication credentials
     load_dotenv(find_dotenv())
     api_key = os.getenv('API_KEY')
     api_url = os.getenv('API_URL')
-
     # authenticate with cloud service
     authenticator = IAMAuthenticator(api_key)
     language_translator = LanguageTranslatorV3(
@@ -51,7 +54,6 @@ def english_to_german(english_text):
         authenticator=authenticator
         )
     language_translator.set_service_url(api_url)
-
     # return text translation
     translation = language_translator.translate(
         text=english_text,
